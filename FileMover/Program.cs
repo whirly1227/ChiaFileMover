@@ -9,7 +9,7 @@ namespace FileMover
 	{
 		static string SourceDirectory = "G:\\";
 		static string MoveToDirectory = "I:\\";
-		static int DelayTime = 60000 * 10;
+		static int DelayTime = 10;
 		static int FileMoveTime = 3;
 		static void Main(string[] args)
 		{
@@ -20,10 +20,10 @@ namespace FileMover
 
 			Timer timer = new();
 			timer.Elapsed += Timer_Elapsed;
-			timer.Interval = DelayTime;
+			timer.Interval = DelayTime * 60000;
 			timer.AutoReset = true;
 			Task.Run(() => timer.Start());
-			Console.WriteLine("Files will be checked every 10 minutes");
+			Console.WriteLine("Files will be checked every " + DelayTime + " minutes");
 			Console.ReadLine();
 
 
